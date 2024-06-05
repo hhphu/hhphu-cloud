@@ -1,6 +1,6 @@
 # Cloud
 
-![improving-cloud-security-1553193784543](https://github.com/hhphu/Cloud/assets/45286750/05645b94-3261-4163-81f3-b8584ec5922c)
+![improving-cloud-security-1553193784543](https://image.chitra.live/api/v1/wps/cc848ad/b64c5d93-25ef-4866-84f7-1391bc09f39e/8/three-clouds-679x419.png)
 
 This Repository contains all resources/notes/cheatsheet I've compiled while learning Cloud. 
 <p align="left"> 
