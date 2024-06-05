@@ -1,6 +1,6 @@
 # Cloud
 
-![improving-cloud-security-1553193784543](https://github.com/hhphu/Cloud/assets/45286750/05645b94-3261-4163-81f3-b8584ec5922c)
+![improving-cloud-security-1553193784543](https://content.kaspersky-labs.com/fm/press-releases/b9/b9655580fc22de8eeb309eac171993f6/processed/what-is-cloud-security01-q75-q75.jpg)
 
 This Repository contains all resources/notes/cheatsheet I've compiled while learning Cloud. 
 <p align="left"> 
