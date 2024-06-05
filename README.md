@@ -1,6 +1,6 @@
 # Cloud
 
-![improving-cloud-security-1553193784543](https://stygian.co.uk/wp-content/uploads/2023/10/Cloud-services.jpg)
+![improving-cloud-security-1553193784543](https://miro.medium.com/v2/resize:fit:1400/1*PEN4-vG-hZdMqMS9deT8HA.png)
 
 This Repository contains all resources/notes/cheatsheet I've compiled while learning Cloud. 
 <p align="left"> 
