@@ -3,7 +3,8 @@
 -----
 - I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to build my mini-portfolio, which helps me build knowlege on AWS services and gain hands on experience. 
 
-<img width="1368" alt="AWS-Architecture-Cloud-resume-challenge" src="https://github.com/hhphu/aws-cloud-resume-challenge/assets/45286750/b9e30186-86b5-455a-a48a-9f3facc45503">
+<img width="1368" alt="AWS-Architecture-Cloud-resume-challenge" src="https://github.com/hhphu/Cloud/assets/45286750/0fb1278f-978f-41c5-8f42-eb63efe8f8c1">
+
 
 ## Service used
 - S3
