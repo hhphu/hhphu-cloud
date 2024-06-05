@@ -10,7 +10,7 @@ This Repository contains all resources/notes/cheatsheet I've compiled while lear
 
 </p>
 <p align="left"> 
-   <a href="./Microsoft Azure">
+   <a href="./Microsoft%20Azure">
      <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="40" height="40"/>
   </a>
 </p>
