@@ -1,6 +1,6 @@
 # Cloud
 
-![improving-cloud-security-1553193784543](https://miro.medium.com/v2/resize:fit:1400/1*PEN4-vG-hZdMqMS9deT8HA.png)
+![improving-cloud-security-1553193784543](https://www.whizlabs.com/blog/wp-content/uploads/2018/05/aws-vs-azure-vs-google.png)
 
 This Repository contains all resources/notes/cheatsheet I've compiled while learning Cloud. 
 <p align="left"> 
