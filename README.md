@@ -1,6 +1,6 @@
 # Cloud
 
-![improving-cloud-security-1553193784543](https://www.whizlabs.com/blog/wp-content/uploads/2018/05/aws-vs-azure-vs-google.png)
+![improving-cloud-security-1553193784543](https://content.kaspersky-labs.com/fm/press-releases/b9/b9655580fc22de8eeb309eac171993f6/processed/what-is-cloud-security01-q75-q75.jpg)
 
 This Repository contains all resources/notes/cheatsheet I've compiled while learning Cloud. 
 <p align="left"> 
