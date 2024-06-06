@@ -1,7 +1,4 @@
 # AWS Security: Threat Detection, Logging and Monitoring
-
-![Header Image](https://images.spiceworks.com/wp-content/uploads/2021/06/04113234/shutterstock_1530570248-1.jpg)
-
 This domain is designed to detect security threats and identify their root cause using security best practices.  This also focuses on Shared Responsibility Model and security best practices dealing with IAM users and EC2 Instances. There are 2 modules in this domain:
 - Threat Detection and Incident Response in AWS
 - Logging and Monitoring in AWS
