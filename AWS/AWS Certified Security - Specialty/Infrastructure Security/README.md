@@ -35,3 +35,11 @@ A VPC is composed of Regions, Availability Zone (AZ), Internet Gateways, Routers
 - Only applies to subnets
 - Is stateless: an outbound rule still needs to be allowed even if inbound traffic is granted.
 
+## Bastions Hosts
+Provide a secure way for external entities to communicate with private resoures. 
+Consider the following diagram
+
+![Untitled Diagram drawio](https://github.com/hhphu/Cloud/assets/45286750/5ff20bfd-88fa-44a8-b083-1b990ad16ecb)
+
+- If we want to access EC1 from the Internet, we should not provide a direct communication channel because it will pose security risks.
+- In this case, we use Bastion Host as a jumnp server that allows communications between EC1 and the Internet. We can configure Security Group rules to secure the communication between the Internet and resources in private subnets.
