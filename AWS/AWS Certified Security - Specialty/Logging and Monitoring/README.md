@@ -9,6 +9,7 @@ This domain is designed to detect security threats and identify their root cause
 -----
 # Incident Response Planning
 An Incident Response Plan is crucial for manaing and mitigating security incidents, ensuring quick and efficient recovery, and maintaining trust with stakeholders. 
+
 ## Core principles of Incident Respons
 ### 1. Educate
 Educate your stakeholders — this includes both your customers and your IT support staff. Everyone involved should be well-versed in the Incident Response Plan.
@@ -69,6 +70,7 @@ System status checks are designed to ensure the underlying hardware and networki
 - Loss of System Power: When the physical server hosting your instance loses power.
 - Software Issues on the Physical Host: Problems with the software running on the physical server.
 - Hardware Issues: Failures in the physical components that impact network reachability.
+
 ## Instance status checks
 Instance status chechs focus on the configuration and operation of the individual instance itself. The checks may fail due to:
 - Failed system status check: if the underlying system status check has already failed
@@ -77,6 +79,7 @@ Instance status chechs focus on the configuration and operation of the individua
 - Incompatible kernel: the instance's OS kernel is not compatible with the instance configuration
 - Misconfigured Networking/Startup configuration: errors in network settings or the startup process.
 These status checks are performed every minute and return either a pass or fail status. If one or more checks fails, the overall status is reported as "impaired".
+
 ## Creating alarms and Automated responses
 AWS allows you to set up alarms based on the status checks. You can configure these alarms to notify you when an issue occurs and even automate responses to hanle the problem. For example:
 -  Recover the instance: attempt to restore the instance to a healthy state.
@@ -84,6 +87,7 @@ AWS allows you to set up alarms based on the status checks. You can configure th
 -  Terminate the instance: permanently remove the instance.
 -  Reboot the instance: restart the instance to clear transient issues.
 These automated actions help ensure minimal downtime and quicker resolutions of issues.
+
 ## CloudWatch metrics
 In addition to status checks, AWS provides CloudWatch metircs for detailed monitoring of EC2 instances. These metrics include:
 - CPU utilization: tracks the % of CPU capacity being used.
@@ -91,7 +95,6 @@ In addition to status checks, AWS provides CloudWatch metircs for detailed monit
 - Network traffic: monitors the amount of data being sent & received by the instance.
 These metrics are essential for understanding the performance and health of the instances. You can view these metrics on the CloudWatch dashboard and set up alarms  to notify you of unusual activiy.
 
------
 ## Dealing with compromised IAM users
 When an IAM user is compromised, follow these steps:
 1. Deactivate Access Keys: We should deactivate the user's access key immediately. **DO NOT DELETE** as the action may disrupt running applications that are associated with the acccess key.
@@ -105,8 +108,9 @@ When an IAM user is compromised, follow these steps:
 - If the impact is minimal, deleate and create a new one.
 - For users with long-term access credentials, considuer using IAM roles for safer short-term credentials.
  
-
+-----
+# Resources
 - [Lab — Dealing with compromised AWS IAM Users](https://medium.com/@harry.hphu/lab-dealing-with-compromised-aws-iam-users-269dc5b889e7)
 - [Lab — EC2 instances with key pair](https://medium.com/@harry.hphu/lab-ec2-encryption-with-key-pair-9a918fed36e7)
 - [Lab — EC2 instances monitoring](https://medium.com/@harry.hphu/lab-ec2-instances-monitoring-91d4ce6a9080)
-- [AWS GuardDuty](https://medium.com/@harry.hphu/aws-security-amazon-guardduty-7cf5d0a44e89)
+
