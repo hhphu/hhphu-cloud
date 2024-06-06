@@ -1,13 +1,13 @@
 # AWS Infrastructure Security
 
-AWS: Infrastructure Security Course is the second course of Exam Prep SCS-C02: AWS Certified Security – Specialty Specialization. This course assists learners to design security controls for edge services such as AWS WAF and AWS Shield. This course is basically divided into two modules and each module is further segmented by Lessons and Video Lectures. This course facilitates learners with approximately 3:00-3:30 Hours of Video lectures that provide both Theory and Hands-On knowledge. Also, Graded and Ungraded Quizzes are provided with every module in order to test the ability of learners. 
+This domain consists of 3 modules:
+-  Network Security Controls: VPC Components
+-  Network Security Controls: VPC Peering and Endpoints
+-  Security Controls for Edge Services in AWS
 
-- Module 1: Network Security Controls: VPC Components
-- Module 2: Network Security Controls: VPC Peering and Endpoints
-- Module 3: Security Controls for Edge Services in AWS
+-----
 
-
-## Network Security Controls: VPC Components
+# VPC Components
 
 This module  explore techniques network security controls in AWS and learn VPC security mechanisms such as Security Groups, Network Access Control List & Bastion hosts.
 
@@ -19,6 +19,11 @@ This module  explore techniques network security controls in AWS and learn VPC s
 
 ### VPC Components
 A VPC is composed of Regions, Availability Zone (AZ), Internet Gateways, Routers (Route Table), subnets and resources within the subnets.
+- Regions: Physical locations where servers and data centers are
+- Availability Zones (AZ): different data centers within a region. These AZs are within 60-mile radius of each other, which ensure the availabilities of services while reducing their latency.
+- Internet Gateway: a component that connects resources within the VPC to the Internet.
+- Router: provides routing to the resources within the VPC so they can communicate with the Internet via the Internet Gateway.
+- Subnets: Segmented networks of the VPC, which can be used for different purposes.
 
 **Security Groups**: 
 - By default, all traffics are denied
