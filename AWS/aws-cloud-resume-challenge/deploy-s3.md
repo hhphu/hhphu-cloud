@@ -6,7 +6,7 @@
 In this post, I will go over 3 different ways to deploy S3 buckets: Using the AWS console, using AWS SAM and Terraform. 
 
 # Deploying S3 bucket using AWS Console
-From AWS consle, go to S3 and click "Create bucket" button
+From AWS console, go to S3 and click "Create bucket" button
   
   ![image](https://github.com/hhphu/Cloud/assets/45286750/1ab4a824-929c-481d-a7a1-1f4875512b05)
   
