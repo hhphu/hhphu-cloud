@@ -21,7 +21,24 @@ Once finished, select the bucket, go to **Permissions** tab and scroll down to t
 
   ![image](https://github.com/hhphu/Cloud/assets/45286750/ef5d0a4b-7749-408c-94b0-f2ac190cf913)
 
-We should get a 403 error. This is expected because we don't have access to the file `index.html` as the bucket is set to private. To view this, we need to use CloudFront.
+We should get a 403 error. This is expected because we expose the bucket to the public, we haven't provided any permision for the public to get access. To do that, got to the bucket's **Permissions** tab, Edit the **Bucket Policy**. Paste the following policy:
+
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "PublicReadGetObject",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::hhphu-resume-bucket/*"
+		}
+	]
+}
+```
+
+Try visiting the website again. We shoudl be able to see the content.
 
 ## Distributing content using CloudFront
 Go to AWS CloudFront and create a new distribution
