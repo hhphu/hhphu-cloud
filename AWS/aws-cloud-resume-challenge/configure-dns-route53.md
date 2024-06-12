@@ -43,3 +43,5 @@ Repeat the same thing for `www.hhphu.click`:
 Once the two records are defined, I can go ahead and **Create records**
 
 Wait for a few minutes for the records to propagate.
+
+Now entering `hhphu.click` should take us to the website. Entering `www.hhphu.click` should be redirected to `hhphu.click`.
