@@ -61,14 +61,16 @@ Go to AWS CloudFront and create a new distribution with the following selections
 
 ### Edit hhphu.click S3 bucket
 - Go to the `hhphu.click` S3 bucket and edit its permissions:
-- Replace the existing policy with the one we just created from the step `(*)` above
-  
+    - Set the bucket to private. With the above policy, CloudFront was able to gain access to `hhphu.click` S3 bucket. Hence, we don't need to expose the bucket to the public anymore.
+    - Replace the existing policy with the one we just created from the step `(*)` above
+
+  ![image](https://github.com/hhphu/Cloud/assets/45286750/4d8646b6-f921-4cf9-9f60-9b5cf6abe2cc)
+
+
 Repeat the above steps for `www.hhphu.click`:
-- Original domain: S3 bucket for `www.hhphu.click` (it should be available from the dropdown)
-- Origin access: Public
-- Alternate domain name: www.hhphu.click
+- Create a distribution for `www.hhphu.click`
+- Create OAC for `www.hhphu.click`
+- Modify `www.hhphu.click` S3 bucket's permissions
 
-The final results should look like this
 
-![image](https://github.com/hhphu/Cloud/assets/45286750/49a76785-eec9-42fd-b253-37e0bc9d6dae)
 
