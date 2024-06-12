@@ -15,7 +15,7 @@ Finish the checkout process.
 
 While waiting for the process to complete (which takes a few minutes), we can proceed to [create S3 buckets](./deploy-s3.md) for the website.
 
-<a id="dns-configuration"><h2> DNS Configuation using AWS Route 53 </h2></a>
+<a id="dns-configuration"><h2> DNS Configuration using AWS Route 53 </h2></a>
 Go to **Route 53 > Hosted zones** and select `hhphu.click`. Click **Create record**
 
 ![image](https://github.com/hhphu/Cloud/assets/45286750/f37eb0c7-3bd6-4c69-a40c-67d59b88fdae)
