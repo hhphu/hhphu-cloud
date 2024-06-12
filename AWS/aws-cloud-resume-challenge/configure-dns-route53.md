@@ -15,3 +15,4 @@ Finish the checkout process.
 
 While waiting for the process to complete (which takes a few minutes), we can proceed to [create S3 buckets](./deploy-s3.md) for the website.
 
+<a id="dns-configuration"><h2> DNS Configuation using AWS Route 53 </h2></a>
