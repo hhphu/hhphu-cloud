@@ -20,5 +20,4 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 -----
 
 # PROJECT WALKTHROUGH
-## Deploy S3
-[Deploying S3 buckets](./deploy-s3.md)
+- [Deploying S3 buckets](./deploy-s3.md)
