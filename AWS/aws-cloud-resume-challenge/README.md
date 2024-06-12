@@ -5,7 +5,6 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 
 <img width="1368" alt="AWS-Architecture-Cloud-resume-challenge" src="https://github.com/hhphu/Cloud/assets/45286750/0fb1278f-978f-41c5-8f42-eb63efe8f8c1">
 
-
 ## Service used
 - S3
 - Route 53
@@ -19,3 +18,7 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 -----
 ## [View the site](https://hhphu.com)
 -----
+
+# PROJECT WALKTHROUGH
+## Deploy S3
+[Deploying S3 buckets](./deploy-s3.md)
