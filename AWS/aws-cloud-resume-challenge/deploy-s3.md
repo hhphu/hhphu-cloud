@@ -15,7 +15,6 @@ From AWS console, go to S3 and click "Create bucket" button
   
   ![image](https://github.com/hhphu/Cloud/assets/45286750/1ab4a824-929c-481d-a7a1-1f4875512b05)
   
-
 In the **Block all public access** section, the box is checked. This ensures that the bucket is not exposed to the public. Leave the rest of the options unchanged. 
 
 Once the bucket is created, select the bucket and go to its **Properties** tab. Scroll down to the **Static website hosting** at the bottom and click Edit enable it.
@@ -50,28 +49,19 @@ We should get a 403 error. This is expected because we expose the bucket to the 
 
 Try visiting the website again. We should be able to see the content.
 
-## Distributing content using CloudFront
-Go to AWS CloudFront and create a new distribution
-- Select the bucket we created above for the **Original domain** field
-- Check **"Origin access control settings (recommended)** option >  click **Create new OAC**. Leave all the options as default and create a new OAC.
+## Create redirecting S3 bucket www.hhphu.click
+From AWS console, go to S3 and click "Create bucket" button
+  
+  ![image](https://github.com/hhphu/Cloud/assets/45286750/1ab4a824-929c-481d-a7a1-1f4875512b05)
 
-  ![image](https://github.com/hhphu/Cloud/assets/45286750/855c6a19-519e-46aa-bda3-c75aa5f7a5ec)
+I don't have to expose this bucket to the public as its main purpose is only to redirect traffic to `hhphu.click`
 
-- Scroll down to the **Default cache behavior**, in the **Viewer protocol policy**, check **HTTPS only**
+Once the bucket is created, got to its **Properties** tab and edit the **Static website hosting** section with the following selections:
+- Static website hosting: Enable
+- Hosting type: Redirect request for an object
+- Host name: hhphu.click
+- Protocol: none (I will come back and make changes to the Protocol once I issue a SSL/TLS certificate)
 
-  ![image](https://github.com/hhphu/Cloud/assets/45286750/8629e319-bce3-49ea-97ac-56b3d515a713)
+  ![image](https://github.com/hhphu/Cloud/assets/45286750/086893bb-890c-4b0a-9b4f-844e38225098)
 
-- Select **Do not enable security protections** for the WAF and **Use only North America and Europe** option for the Price class in Settings.
-
-  ![image](https://github.com/hhphu/Cloud/assets/45286750/7e4402ad-da08-4573-acd8-8e62e17d2bdb)
-
-- Input **index.html** into the **Default root object** field.
-- Leave everything else as default and create a new distribution.
-- Once a new distribution is created, we should get  yellow banner urging us to update the bucket policy
-
-  ![image](https://github.com/hhphu/Cloud/assets/45286750/c92fc020-b23d-425e-9a33-7b70a0fd4db1)
-
-- Go to the bucket's **Permissions** tab to update the policy
-
-  ![image](https://github.com/hhphu/Cloud/assets/45286750/b7968cfa-9670-4f98-971a-1b3d0183110c)
-
+Now that I have created the two buckets for the website. I need to configure [DNS using AWS Route 53](./configure-dns-route53.md).
