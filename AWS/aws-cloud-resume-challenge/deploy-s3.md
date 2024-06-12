@@ -3,17 +3,23 @@
 ![image](https://github.com/hhphu/Cloud/assets/45286750/bd45bfe6-fc74-4b70-a70a-d1382b813d59)
 
 # Introduction
-In this post, I will go over 3 different ways to deploy S3 buckets: Using the AWS console, using AWS SAM and Terraform. 
+In this post, I will go over steps to create S3 buckets for the website. 
+**IMPORTANT:** The bucket name must match your domain name. In this case, it has to be `hhphu.click`.
+
+There will be 2 buckets: one is `hhphu.click` and the other one is `www.hhphu.click`. One will act as the main bucket to host the website while the other will redirects the traffic to the main one. In my case, I choose `hhphu.click` as my main bucket, meaning if a user enter `www.hhphu.click`, he/sher will be redirected to `hhphu.click`
 
 
 # Deploying S3 bucket using AWS Console
+## Create main S3 bucket hhphu.click
 From AWS console, go to S3 and click "Create bucket" button
   
   ![image](https://github.com/hhphu/Cloud/assets/45286750/1ab4a824-929c-481d-a7a1-1f4875512b05)
   
-The bucket name must match your domain name. For example, if your domain is **mycloudresume.com**, the bucket name must also be **cloudresume.com**
-In the **Block all public access** section, the box is checked. This ensures that the bucket is not exposed to the public. 
+
+In the **Block all public access** section, the box is checked. This ensures that the bucket is not exposed to the public. Leave the rest of the options unchanged. 
+
 Once the bucket is created, select the bucket and go to its **Properties** tab. Scroll down to the **Static website hosting** at the bottom and click Edit enable it.
+
 In the Edit window, input **index.html** and **error.html** into the **Index Document field** and the **Error Document field**, respectively.
 
   ![image](https://github.com/hhphu/Cloud/assets/45286750/20624d86-43ed-44ff-8864-4b6e6e774e6f)
@@ -27,20 +33,22 @@ We should get a 403 error. This is expected because we expose the bucket to the 
 
 ```
 {
-	"Version": "2012-10-17",
-	"Statement": [
-		{
-			"Sid": "PublicReadGetObject",
-			"Effect": "Allow",
-			"Principal": "*",
-			"Action": "s3:GetObject",
-			"Resource": "arn:aws:s3:::hhphu-resume-bucket/*"
-		}
-	]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::hhphu.click/*"
+        }
+    ]
 }
 ```
 
-Try visiting the website again. We shoudl be able to see the content.
+**NOTE:** Make sure to replace `hhphu.click` with your bucket name.
+
+Try visiting the website again. We should be able to see the content.
 
 ## Distributing content using CloudFront
 Go to AWS CloudFront and create a new distribution
