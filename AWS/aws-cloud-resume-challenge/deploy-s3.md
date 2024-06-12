@@ -64,4 +64,4 @@ Once the bucket is created, got to its **Properties** tab and edit the **Static 
 
   ![image](https://github.com/hhphu/Cloud/assets/45286750/086893bb-890c-4b0a-9b4f-844e38225098)
 
-Now that I have created the two buckets for the website. I need to configure [DNS using AWS Route 53](./configure-dns-route53.md).
+Now that I have created the two buckets for the website. I need to [configure DNS using AWS Route 53](./configure-dns-route53.md).
