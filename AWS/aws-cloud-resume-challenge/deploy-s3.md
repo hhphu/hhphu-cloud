@@ -5,11 +5,13 @@
 # Introduction
 In this post, I will go over 3 different ways to deploy S3 buckets: Using the AWS console, using AWS SAM and Terraform. 
 
+
 # Deploying S3 bucket using AWS Console
 From AWS console, go to S3 and click "Create bucket" button
   
   ![image](https://github.com/hhphu/Cloud/assets/45286750/1ab4a824-929c-481d-a7a1-1f4875512b05)
   
+The bucket name must match your domain name. For example, if your domain is **mycloudresume.com**, the bucket name must also be **cloudresume.com**
 In the **Block all public access** section, the box is checked. This ensures that the bucket is not exposed to the public. 
 Once the bucket is created, select the bucket and go to its **Properties** tab. Scroll down to the **Static website hosting** at the bottom and click Edit enable it.
 In the Edit window, input **index.html** and **error.html** into the **Index Document field** and the **Error Document field**, respectively.
