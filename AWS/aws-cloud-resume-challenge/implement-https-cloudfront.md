@@ -45,7 +45,7 @@ Go to AWS CloudFront and create a new distribution with the following selections
   
 - Copy the policy so we can use it later for the `hhphu.click` S3 bucket. `(*)`
   
-- Scroll down to the Default cache behavior, in the **Viewer protocol policy**, check **HTTPS only**
+- Scroll down to the Default cache behavior, in the **Viewer protocol policy**, check **Redirect HTTP to HTTPS**
 
 ![image](https://github.com/hhphu/Cloud/assets/45286750/4d014937-dc75-49a2-bd93-d8546d0be367)
 
