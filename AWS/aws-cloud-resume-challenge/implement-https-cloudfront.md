@@ -30,7 +30,6 @@ Proceed to **Create records**
 This will take a bit for the certificates to be issued. Once the certificates are issued, proceed to **CloudFront**.
 
 
------
 # Distributing content using CloudFront
 Go to AWS CloudFront and create a new distribution with the following selections:
 - Original domain: S3 bucket for `hhphu.click` (it should be available from the dropdown)
@@ -66,11 +65,30 @@ Go to AWS CloudFront and create a new distribution with the following selections
 
   ![image](https://github.com/hhphu/Cloud/assets/45286750/4d8646b6-f921-4cf9-9f60-9b5cf6abe2cc)
 
-
 Repeat the above steps for `www.hhphu.click`:
 - Create a distribution for `www.hhphu.click`
 - Create OAC for `www.hhphu.click`
 - Modify `www.hhphu.click` S3 bucket's permissions
 
+Once the distributions are created, we can test them by visiting the **Distribution domain name**
 
+![image](https://github.com/hhphu/Cloud/assets/45286750/29f49e90-e29d-4fd5-8e44-0f3963560f8e)
 
+# Configure DNS with Route 53
+Now that we have CloudFront Distributions for our website. However, the url currently looks like `https://d2g606l27192i3.cloudfront.net`, which is not what I desired it to be. I want the URL to be `https://hhphu.click`
+
+- Go to **Route 53** > **hhphu.click** hosted zone
+- Select `hhphu.click` and edit its A record
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/6bc84098-4b51-4fdf-9edc-85a5fd6a66bd)
+
+- In the **Route traffic to** section, change the selection to **Alias to CloudFront distribution**
+- Choose the distribution associated with `hhphu.click` and **Save**
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/85337324-b9d5-425a-b809-a2728a2c77c4)
+
+- Do the same for `www.hhphu.click`
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/e8365b1e-8e68-468b-9f58-7b5c6eb7de49)
+
+Now that every is set. Wait for a few minutes for the change to take affect. And we should be able to view the website when visiting `hhphu.click`
