@@ -1,6 +1,6 @@
 # Create Lambda function
 
-![image](https://github.com/hhphu/Cloud/assets/45286750/3aa89083-cb31-4f3a-a749-78dccf101e49)
+![image](https://github.com/hhphu/Cloud/assets/45286750/cc2d8332-fa61-4cd9-8c64-2db831e3ae8b)
 
 In this post, I will go over creating a lambda function to retrieve the view count and update it.
 
