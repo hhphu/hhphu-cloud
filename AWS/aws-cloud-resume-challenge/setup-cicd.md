@@ -49,3 +49,8 @@ jobs:
     - name: Copy to S3
       run: aws s3 sync ./build/. s3://hhphu.click
 ```
+
+To setup GitHub secret keys and variables:
+1. Go to Settings
+2. In the Security section, select **Secrets and variables** > **Actions**
+3. Add repository secret
