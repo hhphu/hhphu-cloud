@@ -70,3 +70,13 @@ Now that the Lambda function has full access to the DynamoDB, we shouldnt get In
 
 ![image](https://github.com/hhphu/Cloud/assets/45286750/1a7ea58b-2a12-40d4-b7a8-82cb20c2798a)
 
+# Update JavaScript code on website to fetch the Lambda function
+Here's the code to fetch the Lambda function
+
+```javascript
+async function updateCounter() {
+    let response = await fetch(LAMBDA_URL);
+    let data = await response.json();
+}
+```
+Depending on how you build your website, you can choose how to display the data variable.
