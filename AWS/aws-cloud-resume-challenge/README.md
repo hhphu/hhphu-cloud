@@ -20,8 +20,9 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 -----
 
 # PROJECT WALKTHROUGH
-- [Configure DNS with AWS Route 53](configure-dns-route53.md)
-- [Deploy S3 buckets](deploy-s3.md)
-- [Implement HTTPS with AWS CloudFront](implement-https-cloudfront.md)
-- [Create DynamoDB](create-dynamodb.md)
-- [Create Lambda Function](create-lambda-function.md)
+1. [Configure DNS with AWS Route 53](configure-dns-route53.md)
+2. [Deploy S3 buckets](deploy-s3.md)
+3. [Implement HTTPS with AWS CloudFront](implement-https-cloudfront.md)
+4. [Create DynamoDB](create-dynamodb.md)
+5. [Create Lambda Function](create-lambda-function.md)
+6. [Set up CI/CD for Front End](setup-cicd.md)
