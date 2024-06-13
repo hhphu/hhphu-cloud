@@ -23,3 +23,5 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 - [Configure DNS with AWS Route 53](configure-dns-route53.md)
 - [Deploy S3 buckets](deploy-s3.md)
 - [Implement HTTPS with AWS CloudFront](implement-https-cloudfront.md)
+- [Create DynamoDB](create-dynamodb.md)
+- [Create Lambda Function](create-lambda-function.md)
