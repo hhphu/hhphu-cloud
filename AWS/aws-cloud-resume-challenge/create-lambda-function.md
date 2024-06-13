@@ -19,7 +19,7 @@ From the screenshot above, click the function URL and we should see the message 
 
 ![image](https://github.com/hhphu/Cloud/assets/45286750/8b37da92-f9d9-4638-9ab7-c83d19b89719)
 
-## Edit Lambda code
+# Edit Lambda code
 Now we have to update the Lambda function to retrieve the count and update it
 
 ```python
@@ -42,3 +42,31 @@ def lambda_handler(event, context):
     return (views)
 
 ```
+
+Remember to save the change and deploy the function.
+
+# Testing the function
+Once the Lambda function is deployed, click its URL to test:
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/1fc3b37c-8c27-49db-83e8-214bfdb899ce)
+
+We got Internal error. Try running "Test" in the Lambda dashboard, we got the follow error:
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/33e86415-a0b8-4307-a5b2-7a3937e0897f)
+
+This is because the Lambda function does not have access to the DynamoDB. We need to create a policy that grants the Lambda function access to the DynamoDB's table. To do that:
+- Click the **Configuration** tab
+- Under the **Execurtion role** section, we see a role assigned to the Lambda function
+
+   ![image](https://github.com/hhphu/Cloud/assets/45286750/23d54981-853e-46ce-857a-26be65ede3e2)
+
+- Click the role name.
+- On a new window, click **Add permissions** button > **Attach policies**
+- Search "DynamoDB" and select **AmazonDynamoDBFullAccess** option > **Add Permission**
+
+  ![image](https://github.com/hhphu/Cloud/assets/45286750/f656a82c-eb2b-405d-91f4-cc58d07fe1da)
+
+Now that the Lambda function has full access to the DynamoDB, we shouldnt get Internal Server Error again.
+
+![image](https://github.com/hhphu/Cloud/assets/45286750/1a7ea58b-2a12-40d4-b7a8-82cb20c2798a)
+
