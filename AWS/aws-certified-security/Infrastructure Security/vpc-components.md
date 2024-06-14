@@ -1,4 +1,4 @@
-# VPC COMPONENTS
+# VPC Components
 
 This module  explore techniques network security controls in AWS and learn VPC security mechanisms such as Security Groups, Network Access Control List & Bastion hosts.
 
