@@ -26,3 +26,4 @@ I attempted the [Cloud Resume Challenge](https://cloudresumechallenge.dev/) to b
 4. [Create DynamoDB](create-dynamodb.md)
 5. [Create Lambda Function](create-lambda-function.md)
 6. [Set up CI/CD for Front End](setup-cicd.md)
+7. [Create Infrastructure as Code using Terraform](Terraform)
