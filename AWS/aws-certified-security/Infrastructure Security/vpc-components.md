@@ -12,6 +12,8 @@ A VPC is composed of Regions, Availability Zone (AZ), Internet Gateways, Routers
 - Regions: Physical locations where servers and data centers are
 - Availability Zones (AZ): different data centers within a region. These AZs are within 60-mile radius of each other, which ensure the availabilities of services while reducing their latency.
 - Internet Gateway: a component that connects resources within the VPC to the Internet.
+    - Egress-only Gateway: allows IPv^ address to initiate outbound connections to the internet. No inbound connection is allowed.
+- NAT gateways: allow resources in private subnets to communicate with those outside fo VPCs.
 - Router: provides routing to the resources within the VPC so they can communicate with the Internet via the Internet Gateway.
 - Subnets: Segmented networks of the VPC, which can be used for different purposes.
 
