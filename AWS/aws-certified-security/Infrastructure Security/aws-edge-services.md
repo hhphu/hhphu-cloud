@@ -61,3 +61,14 @@
 - The AWS marketplace offers various vendors and products for this purpose.
 - Users can subscribe to a product, integrate it with their AWS account, and deploy an IAM role for threat detection.
 - These systems also provide recommendations for improving security in the AWS account.
+
+## AWS Lambda Security
+In this chapter on the security of the AWS Lambda service, we learn about various security aspects and features that can be used to ensure the safety of your Lambda functions. Here are the key points covered:
+1. Set the right permissions: It is important to ensure that the appropriate permissions are set for users to access the AWS Lambda service.
+2. Enable CloudTrail: By enabling CloudTrail, you can monitor API activity and user activity, providing you with visibility and control over your Lambda functions.
+3. Use IAM roles: IAM roles can be used to control access to other AWS services. If your Lambda function needs to access objects in an S3 bucket, you can create an IAM role and attach it to the Lambda function to grant the necessary permissions.
+4. Secure connections: By default, all Lambda API endpoints only support secure connections, ensuring that data is transmitted securely.
+5. Use environment variables: Environment variables can be used to store secrets securely that need to be used within AWS Lambda. For example, you can store a database password as an environment variable and reference it in your Lambda function.
+6. Encrypt environment variables with AWS KMS: To further enhance security, you can allow AWS Key Management Service (KMS) to encrypt the environment variables, ensuring that sensitive information is protected.
+
+Remember to review the AWS Lambda service and explore the options available to set permissions, manage IAM roles, and configure environment variables securely.
