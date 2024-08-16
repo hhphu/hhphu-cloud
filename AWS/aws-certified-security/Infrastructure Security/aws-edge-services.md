@@ -1,20 +1,48 @@
 # AWS Edge Services
 
 ## AWS Load Balancer
-- Securing connections to the AWS Elastic Load Balancer:
-  - Define a load balancer in AWS to accept secure connections.
-  - All connections between the client and the load balancer are encrypted using SSL or TLS protocols.
-  - This is known as SSL offloading.
-- Steps to ensure secure traffic:
-  - Add an HTTPS listener to the load balancer.
-  - Allow traffic on HTTPS in the load balancer's security groups.
-  - Deploy an SSL certificate onto the load balancer.
-  - Use a security policy for the load balancer to negotiate connections between clients and the load balancer.
-- Implementing SSL on backend EC2 instances:
-  - SSL connection is terminated at the application load balancer (SSL offloading).
-  - Backend connections between the load balancer and EC2 instances can also be secured by implementing SSL on the instances.
-  - Backend instances can listen on port 80 or port 443, depending on the desired level of security.
+#### 1. **Introduction**
+   - **Objective:** Learn how to secure connections to AWS Elastic Load Balancer (ELB) and implement SSL.
+   - **Key Topics:**
+     - Securing connections to AWS ELB.
+     - Implementing SSL for AWS ELB.
 
+#### 2. **Securing Connections to AWS Elastic Load Balancer**
+   - **Secure Connections:** 
+     - AWS allows the definition of a load balancer to accept secure connections.
+     - **SSL/TLS Encryption:** All connections between the client and the ELB are encrypted using SSL or TLS protocols.
+     - **SSL Offloading:** The encryption process (SSL/TLS) is terminated at the ELB, reducing the load on backend servers.
+   - **Backend Connections:**
+     - Can be configured to be secure (encrypted) or insecure (unencrypted) depending on the application requirements.
+
+#### 3. **Steps to Secure Traffic to AWS ELB**
+   - **Add HTTPS Listener:**
+     - Ensures that the load balancer can accept HTTPS traffic.
+   - **Security Groups Configuration:**
+     - Ensure that the security groups associated with the load balancer allow traffic on HTTPS (port 443).
+   - **Deploy SSL Certificate:**
+     - An SSL certificate must be installed on the load balancer to enable SSL/TLS encryption.
+   - **Use Security Policies:**
+     - Security policies are used to negotiate secure connections between clients and the load balancer.
+
+#### 4. **SSL Offloading and Backend Security**
+   - **Application Load Balancer (ALB):**
+     - When users connect securely via SSL, the SSL connection is terminated at the ALB.
+     - **Backend Instances:**
+       - If you want backend connections to also be secure, SSL can be implemented on backend EC2 instances as well.
+       - **Port Configuration:**
+         - Backend instances can listen on port 80 (insecure) or port 443 (secure).
+
+#### 5. **Lab Overview**
+   - **Lab Activities:**
+     - Create an EC2 instance using a WordPress AMI.
+     - Create an Application Load Balancer.
+     - Test the load balancer.
+     - Use Route 53 to add an alias record for the load balancer.
+     - Add an HTTPS listener for the load balancer.
+   - **Objective:** Implement the security measures discussed, including SSL/TLS and HTTPS configuration.
+
+This study note summarizes the key points from the lesson on securing connections with AWS Elastic Load Balancer and the steps needed to implement SSL for secure communication.
 ## AWS CloudFront
 - HTTPS with CloudFront:
   - You can configure HTTPS with CloudFront to ensure secure communication between users and CloudFront.
