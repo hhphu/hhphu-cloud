@@ -103,11 +103,6 @@
 This chapter provided an overview of how to implement and utilize Intrusion Detection and Prevention Systems within your AWS infrastructure, emphasizing the importance of these tools in maintaining a secure environment.
 
 ## AWS Lambda Security
-Here’s a summarized version of the chapter on AWS Lambda security:
-
----
-
-### AWS Lambda Security Overview
 #### Key Concepts:
 1. **Permissions and Access Control**:
    - **IAM Permissions**: Ensure that the correct IAM permissions are set for users who need access to the AWS Lambda service.
