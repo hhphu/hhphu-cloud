@@ -33,70 +33,93 @@
        - **Port Configuration:**
          - Backend instances can listen on port 80 (insecure) or port 443 (secure).
 
-#### 5. **Lab Overview**
-   - **Lab Activities:**
-     - Create an EC2 instance using a WordPress AMI.
-     - Create an Application Load Balancer.
-     - Test the load balancer.
-     - Use Route 53 to add an alias record for the load balancer.
-     - Add an HTTPS listener for the load balancer.
-   - **Objective:** Implement the security measures discussed, including SSL/TLS and HTTPS configuration.
-
-This study note summarizes the key points from the lesson on securing connections with AWS Elastic Load Balancer and the steps needed to implement SSL for secure communication.
 ## AWS CloudFront
-- HTTPS with CloudFront:
-  - You can configure HTTPS with CloudFront to ensure secure communication between users and CloudFront.
-  - When a user submits an HTTPS request to CloudFront, an SSL/TLS negotiation occurs between the user and CloudFront.
-  - If the requested object is in the cache, CloudFront encrypts the response and sends it back to the user.
-  - If the object is not in the cache, CloudFront performs an SSL/TLS negotiation with the origin (e.g., an S3 bucket), retrieves the encrypted object, decrypts it, re-encrypts it, and then sends it back to the user.
+#### 1. **Introduction**
+   - **Objective:** Understand how to enhance security with AWS CloudFront.
+   - **Key Topics:**
+     - Using HTTPS with CloudFront.
+     - Restricting access to files in Amazon S3 buckets through CloudFront.
 
-- Restricting Access to Files in Amazon S3 Buckets:
-  - By default, users need public access to an S3 bucket to access objects via CloudFront.
-  - To add an extra layer of security, you can allow CloudFront to create an origin access identity.
-  - The origin access identity is a special identity that CloudFront creates and gives access to read files from the underlying S3 bucket.
-  - This ensures that users can only access the objects through CloudFront and not directly from the S3 bucket.
+#### 2. **Using HTTPS with CloudFront**
+   - **Configuring HTTPS:** 
+     - **Purpose:** Ensure that users access objects via CloudFront securely using HTTPS.
+     - **SSL/TLS Negotiation:** 
+       - When a user submits an HTTPS request, SSL/TLS negotiation occurs between the user and CloudFront.
+       - If the requested object is cached in CloudFront, it is encrypted and returned to the user.
+       - If the object is not cached, CloudFront negotiates SSL/TLS with the origin server, retrieves the encrypted object, decrypts it, re-encrypts it, and then sends it back to the user.
+
+#### 3. **Restricting Access to Amazon S3 Buckets**
+   - **Default Behavior:**
+     - By default, S3 buckets need to be publicly accessible for users to fetch objects via CloudFront, which can expose the bucket to direct access.
+   - **Origin Access Identity (OAI):**
+     - **Solution:** Use CloudFront's Origin Access Identity to restrict direct access to S3 buckets.
+     - **Implementation:**
+       - CloudFront creates a special identity (OAI) that is granted read access to the S3 bucket.
+       - This ensures that objects in the S3 bucket are only accessible through CloudFront and not directly via the S3 URL.
 
 ## AWS Web Application Firewall
-- AWS Web Application Firewall Service:
-  - Monitors and controls HTTP and HTTPS requests to AWS resources.
-  - Protects web infrastructure against attacks like cross-site scripting and SQL code injection.
-  - Can block requests from specific locations or countries.
-  - Uses web access control lists, rules, and conditions to define protection criteria.
-- Creating a Web Access Control List:
-  - Define conditions based on different types of attacks (e.g., cross-site scripting, IP addresses).
-  - Create rules that specify which conditions to apply.
-  - Associate the web access control list with AWS resources like an application load balancer.
-- Benefits of the Web Application Firewall Service:
-  - Protects web infrastructure against various types of attacks.
-  - Provides flexibility in defining rules and conditions.
-  - Offers marketplace options for easier rule creation.
-  - Allows for easy removal and cleanup of resources.
+### Key Points:
+1. **Introduction to AWS WAF**:
+   - AWS WAF is used to monitor and control HTTP and HTTPS requests to AWS resources like API Gateway, CloudFront, and Application Load Balancer.
+   - It helps protect against attacks such as cross-site scripting, SQL injection, and requests from specific locations.
+
+2. **Setting Up WAF**:
+   - **Web Access Control List (Web ACL)**: A Web ACL is created to define protection rules.
+   - **Rules**: Within the Web ACL, rules are defined, and conditions are set based on attack types or IP addresses.
+   - **Conditions**: Conditions like IP address filtering, cross-site scripting protection, or SQL injection protection are defined first.
 
 ## AWS Shield
-- AWS Shield is a service provided by Amazon Web Services (AWS) that helps protect against distributed denial of service (DDoS) attacks.
-- DDoS attacks involve flooding a web application with a large amount of network traffic, making it inaccessible to users.
-- AWS Shield offers two pricing tiers: AWS Shield Standard and AWS Shield Advanced.
-  - **AWS Shield Standard** is automatically available for all AWS accounts at no additional charge. It protects against network and transport layer DDoS attacks.
-  - **AWS Shield Advanced** provides a higher level of protection for applications using services like Amazon EC2, Elastic Load Balancer, Amazon CloudFront, and Amazon Route 53.
-    - With AWS Shield Advanced, you can also access a 24/7 DDoS response team for assistance during an actual DDoS attack.
-    - AWS Shield Advanced offers advanced real-time metrics and reports to provide insights on DDoS attacks.
-- To find AWS Shield in the AWS console, you can search for "WAF and Shield" (Web Application Firewall and Shield).
+#### Key Concepts:
+1. **DDoS Attacks**: 
+   - A DDoS attack involves flooding a web application with excessive network traffic, rendering the application inaccessible. This can disrupt normal user access and cause significant downtime.
 
-## EC2 Instance Detection and Prevention chin chu- Intrusion detection and prevention systems are used to monitor networks and systems for malicious activity.
-- These systems add an extra layer of security to infrastructure.
-- They can detect and prevent malicious activity, alert administrators of possible incidents, and block attacks or intrusions.
-- Third-party tools from the AWS marketplace are needed to implement intrusion detection and prevention systems.
-- The AWS marketplace offers various vendors and products for this purpose.
-- Users can subscribe to a product, integrate it with their AWS account, and deploy an IAM role for threat detection.
-- These systems also provide recommendations for improving security in the AWS account.
+2. **AWS Shield Tiers**:
+   - **AWS Shield Standard**:
+     - Automatically included at no extra cost.
+     - Protects against network and transport layer DDoS attacks.
+   - **AWS Shield Advanced**:
+     - A premium service costing around $3,000 per month.
+     - Provides enhanced protection, including application-level monitoring, real-time metrics, and 24/7 support from the DDoS Response Team.
+     - Suitable for high-profile applications utilizing Amazon EC2, Elastic Load Balancer, Amazon CloudFront, or Amazon Route 53.
+
+#### Practical Application:
+- AWS Shield can be accessed through the AWS Management Console under the "WAF and Shield" section.
+- The service offers comprehensive protection features, with AWS Shield Advanced providing additional support and insights during large-scale DDoS attacks.
+
+## EC2 Instance Detection and Prevention
+#### Key Concepts:
+1. **Intrusion Detection and Prevention**:
+   - **Purpose**: IDPS are used to monitor networks and systems for malicious activities.
+   - **Functionality**: These systems detect, prevent, and alert administrators of potential incidents, blocking or dropping malicious traffic when necessary.
+
+2. **Implementation on AWS**:
+   - **Third-Party Tools**: IDPS tools are available through the AWS Marketplace. You can subscribe to these tools and integrate them into your AWS environment.
+   - **Integration**: Upon subscribing to a service like Alert Logic, the tool integrates with your AWS account by deploying an IAM role that monitors and performs threat detection across your AWS resources.
+
+3. **Vendor Selection and Configuration**:
+   - **AWS Marketplace**: Various vendors offer IDPS tools with different pricing and features.
+   - **Setup**: After subscribing, you'll likely need to create an account with the vendor and configure the service to monitor your AWS environment. The system can provide security recommendations and monitor specific regions, VPCs, and subnets in your account.
+
+This chapter provided an overview of how to implement and utilize Intrusion Detection and Prevention Systems within your AWS infrastructure, emphasizing the importance of these tools in maintaining a secure environment.
 
 ## AWS Lambda Security
-In this chapter on the security of the AWS Lambda service, we learn about various security aspects and features that can be used to ensure the safety of your Lambda functions. Here are the key points covered:
-1. Set the right permissions: It is important to ensure that the appropriate permissions are set for users to access the AWS Lambda service.
-2. Enable CloudTrail: By enabling CloudTrail, you can monitor API activity and user activity, providing you with visibility and control over your Lambda functions.
-3. Use IAM roles: IAM roles can be used to control access to other AWS services. If your Lambda function needs to access objects in an S3 bucket, you can create an IAM role and attach it to the Lambda function to grant the necessary permissions.
-4. Secure connections: By default, all Lambda API endpoints only support secure connections, ensuring that data is transmitted securely.
-5. Use environment variables: Environment variables can be used to store secrets securely that need to be used within AWS Lambda. For example, you can store a database password as an environment variable and reference it in your Lambda function.
-6. Encrypt environment variables with AWS KMS: To further enhance security, you can allow AWS Key Management Service (KMS) to encrypt the environment variables, ensuring that sensitive information is protected.
+Here’s a summarized version of the chapter on AWS Lambda security:
 
-Remember to review the AWS Lambda service and explore the options available to set permissions, manage IAM roles, and configure environment variables securely.
+---
+
+### AWS Lambda Security Overview
+#### Key Concepts:
+1. **Permissions and Access Control**:
+   - **IAM Permissions**: Ensure that the correct IAM permissions are set for users who need access to the AWS Lambda service.
+   - **IAM Roles**: Use IAM roles to control access from AWS Lambda to other AWS services. For example, if your Lambda function needs access to an S3 bucket, create and attach an IAM role with the necessary permissions to the Lambda function.
+
+2. **Monitoring and Logging**:
+   - **CloudTrail**: Enable AWS CloudTrail to monitor API activity and user actions within your AWS environment, including activities related to Lambda.
+
+3. **Security Measures for Lambda**:
+   - **Secure Connections**: By default, all Lambda API endpoints support secure connections only.
+   - **Environment Variables**: Store secrets, such as database passwords, securely in environment variables. Use AWS Key Management Service (KMS) to encrypt these environment variables to ensure their security.
+
+4. **Practical Implementation**:
+   - **Adding Execution Roles**: Within the AWS Lambda console, you can add an execution role to a Lambda function to grant it permissions to interact with other AWS services.
+   - **Encrypting Environment Variables**: When adding environment variables (e.g., `dbpassword`), utilize AWS KMS to encrypt them, ensuring that sensitive data is protected.
