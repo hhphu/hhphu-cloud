@@ -11,7 +11,7 @@ Create two VPCs, `primary-vpc` (us-east-1) and `secondary-vpc` (us-west-2):
 
 3. Upload a template file
 4. Click "Choose file" butotn
-5. Select the 'vpc.yml` file
+5. Select the `vpc.yml` file
 6. Next
 7. Fill in the Stack name, `design-for-arr-primary` & `design-for-arr-secondary`
 8. Name the VPCs: `primary-vpc` and `secondary-vpc`
@@ -47,6 +47,18 @@ Confirm the stacks are created:
 
 
 ## Data Durability And Recovery
+### Create subnet group for DB
+We want to place our DB in private subenets. Hence we need to create private subnet groups and attach it to the DB in the process of creating it.
+1. RDS > Subnet groups > Create DB subnet group
+#### Subnet group details
+2. **Name**: `Subnet for primary DB`
+3. **VPC**: `primary-vpc
+#### Add subnets
+4. **Availability Zones**: `us-east-1a`, `us-east-1b`
+5. **Subnets**: Select the two private subnets `primary-vpc Private Subnet (us-east-1a)` and `primary-vpc Private Subnet (us-east-1b)`
+
+![image](https://github.com/user-attachments/assets/16640088-8a09-4181-b7ff-a305f27416c2)
+
 ### Highly durable RDS Database
 In the primary region (us-east-1), create a new RDS Subnet group using the private subnets:
 1. Create a new MySQL, multi-AZ database:
@@ -68,11 +80,11 @@ In the primary region (us-east-1), create a new RDS Subnet group using the priva
 
   - **Connectivity**
     - **Virtual private cloud**: `primary-vpc`
-    - **Public Access**: `No`
+    - **DB subnet group**: `private subnets for db`
     - **VPC security group**: `Choose existing`
     - **Exiting VPC security groups**: `UDARR-Database`
 
-  ![image](https://github.com/user-attachments/assets/882eeece-fb03-4d23-bc6c-4d51b78c1b59)
+ ![image](https://github.com/user-attachments/assets/44015f7e-a3ec-4b5c-bde5-9358b3346738)
 
   - Expand the **Additional Configuration** section
     - **Initial database name**: `udacity`
