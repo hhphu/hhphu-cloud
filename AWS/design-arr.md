@@ -147,4 +147,50 @@ Because the replica is already available and ready to be used, the RPO is about 
 5. Launch Instance
 Once the EC2 instance is created, sign in and try to connect to the DB.
 
+```bash
+ssh -i ec2-arr.pem ubuntu@$IP
+```
+## Accesss the primary Database
+Access the DB: 
+
+```bash
+mysql -u admin -p -h $DB_ENDPOINT
+```
+![image](https://github.com/user-attachments/assets/0380120b-09de-49da-bac2-03f998a59da6)
+
+Create a table `users` in the `udacity` database
+
+```sql
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT, -- Auto-incrementing ID for unique identification
+    name VARCHAR(50) NOT NULL,         -- User's name
+    email VARCHAR(100) UNIQUE NOT NULL, -- User's email
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp of creation
+);
+```
+
+Insert data into the table:
+
+```sql
+INSERT INTO users (name, email)
+VALUES 
+    ('Alice', 'alice@example.com'),
+    ('Bob', 'bob@example.com'),
+    ('Charlie', 'charlie@example.com');
+```
+Verify the data is inserted into the newly created table:
+
+```sql
+SELECT * FROM users;
+```
+
+![image](https://github.com/user-attachments/assets/4d3a360a-9453-4afd-8604-61a694633b19)
+
+## Check for DB Connection activities.
+1. Select the primary database `arr-database` > Select **Monitoring** tab and view the **Database Connections** dashboard.
+2. We can confirm that all the connections to DB were all logged and monitored
+
+   ![image](https://github.com/user-attachments/assets/f99dda89-a91e-4961-8812-1da98623a508)
+
+
 
