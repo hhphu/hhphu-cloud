@@ -123,7 +123,7 @@ Once the Database is created. Confirm some of its configurations:
 
        ![image](https://github.com/user-attachments/assets/53cf7c70-db7d-46b2-8746-b2dbc0a8886a)
 
-      - **Log exports**: `Audit Log`, `Error Log`, `General Log`, `Slow query log`
+     - **Log exports**: `Audit Log`, `Error Log`, `General Log`, `Slow query log`
 
 ### Availability Estimate
 - Single AZ outage: In an event of a single AZ outage, we can start a replica in a different zone (within the same region). This will takes about 2 minutes so the RTO is about 2 minutes.
