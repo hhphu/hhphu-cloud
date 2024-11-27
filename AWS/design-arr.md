@@ -1,5 +1,8 @@
 # Design for Availability, Reliability and Resiliency
 
+## Overview
+In this project I will create highly available solutions to common use cases. I will build a Multi-AvailabilityZone, Multi-Region database and show how to use it in multiple geographically separate AWS regions. 
+
 ![screenshot-2023-12-15-at-4 32 26pm](https://github.com/user-attachments/assets/4258e84d-8e8a-485b-a13d-d857dc430af2)
 
 ## Create VPCs
