@@ -137,6 +137,7 @@ Because the replica is already available and ready to be used, the RPO is about 
 - Similar to the above scenario, the RPO in this case will be about 5-10 minutes as it's the length for the secondary resources to be ready for usage.
 
 ## Create EC2 Instance to access DB
+In the primary region `us-east-1`, create an EC2 instance:
 1. EC2 > Instances > Launch an instance
 2. Select Ubuntu as the OS images option
 3. Create a key pair: `ec2-arr.pem`
@@ -186,11 +187,95 @@ SELECT * FROM users;
 
 ![image](https://github.com/user-attachments/assets/4d3a360a-9453-4afd-8604-61a694633b19)
 
-## Check for DB Connection activities.
+### Check for DB Connection activities.
 1. Select the primary database `arr-database` > Select **Monitoring** tab and view the **Database Connections** dashboard.
 2. We can confirm that all the connections to DB were all logged and monitored
 
    ![image](https://github.com/user-attachments/assets/f99dda89-a91e-4961-8812-1da98623a508)
 
+This has concluded that we have successfully created a primary DB in the primary region, which we have both read and write permissions.
 
+## Accesss the secondary Database (read replica)
+In the secondary region `us-west-2`, create an EC2 instance:
+1. EC2 > Instances > Launch an instance
+2. Select Ubuntu as the OS images option
+3. Create a key pair: `ec2-arr-2.pem`
+4. **Network settings**:
+  - **VPC**: `secondary-vpc`
+  - **Subnet**: use one of the VPC public subnets
+  - **Security Group**: `Select exiting security group` > `UDARR-Application`
+5. Launch Instance
+Once the EC2 instance is created, sign in and try to connect to the DB.
 
+Access the read replica DB:
+
+```bash
+mysql -u admin -p -h arr-db-read-replica.cnz6yyv6jplm.us-west-2.rds.amazonaws.com
+```
+![image](https://github.com/user-attachments/assets/e7a18cf4-9c25-4ea4-93c8-86c7c08865fa)
+
+Verify we have read permnission on the `arr-db-read-replica`
+
+```sql
+use udacity;
+select * from users;
+```
+
+![image](https://github.com/user-attachments/assets/811f71a6-ceb8-4ca5-9c89-2e3f32ba0559)
+
+Try inserting new data to the table
+
+```sql
+INSERT INTO users (name, email)
+VALUES 
+    ('Alan', 'alan@example.com');
+```
+
+As expected, we get the error stating the Database only has read permission. We can't write to the database.
+
+![image](https://github.com/user-attachments/assets/bcbefad6-1cfe-46c9-af91-5a094ee1e7e4)
+
+To grant write persmission to the `arr-db-read-replica`, we promote the database.
+- Select the `arr-db-read-replica` database > Actions > Promote
+
+  ![image](https://github.com/user-attachments/assets/d74da545-01aa-4a05-b39a-4e68e6c9eb52)
+
+Once promoted, the database will grant users write permission. Try inserting data again:
+
+```sql
+INSERT INTO users (name, email)
+VALUES 
+    ('Alan', 'alan@example.com');
+```
+
+![image](https://github.com/user-attachments/assets/27fc517b-5866-4a4f-8b43-b2aff256a331)
+
+We now can write to the replica Database. We can also create another table within the database
+
+```sql
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT, -- Unique identifier for each order
+    user_id INT NOT NULL,                    -- References the id from the users table
+    product_name VARCHAR(100) NOT NULL,      -- Name of the product
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date and time of the order
+    FOREIGN KEY (user_id) REFERENCES users(id) -- Ensures user_id exists in the users table
+);
+
+INSERT INTO orders (user_id, product_name)
+VALUES 
+    (1, 'Laptop'),
+    (2, 'Smartphone'),
+    (3, 'Tablet'),
+    (1, 'Headphones');
+```
+
+Check the newly created table: `select * from orders;`
+
+![image](https://github.com/user-attachments/assets/1c1b5367-6d68-43e4-aad7-0f2afc388fb6)
+
+Going back to the **Monitoring** tab, we see the connections to `arr-db-read-replica` database is logged in the **Database Connections** dashboard.
+
+![image](https://github.com/user-attachments/assets/35bada41-dac3-47a1-b1c0-10e2e517d68a)
+
+We have now successfully created an architecture with high availability and reliability.
