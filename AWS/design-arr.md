@@ -124,10 +124,27 @@ Once the Database is created. Confirm some of its configurations:
        ![image](https://github.com/user-attachments/assets/53cf7c70-db7d-46b2-8746-b2dbc0a8886a)
 
      - **Log exports**: `Audit Log`, `Error Log`, `General Log`, `Slow query log`
+ 
+  Confirm that the replica databas is also in the private subnet
+
+  ![image](https://github.com/user-attachments/assets/9a7ad303-493e-4908-a569-12fa5acf8bfc)
+
 
 ### Availability Estimate
 - Single AZ outage: In an event of a single AZ outage, we can start a replica in a different zone (within the same region). This will takes about 2 minutes so the RTO is about 2 minutes.
 Because the replica is already available and ready to be used, the RPO is about 1 or 2 minutes or, in some cases, can be considered 0 minute.
 - Single region outage: In an event of a single region outage, we can refer to the secondary replica from different region. Time to switch to the secondary resources is approximately 5 to 10 minutes. Hence, the RTO is about 5 - 10 minutes.
 - Similar to the above scenario, the RPO in this case will be about 5-10 minutes as it's the length for the secondary resources to be ready for usage.
+
+## Create EC2 Instance to access DB
+1. EC2 > Instances > Launch an instance
+2. Select Ubuntu as the OS images option
+3. Create a key pair: `ec2-arr.pem`
+4. **Network settings**:
+  - **VPC**: `primary-vpc`
+  - **Subnet**: use one of the VPC public subnets
+  - **Security Group**: `Select exiting security group` > `UDARR-Application`
+5. Launch Instance
+Once the EC2 instance is created, sign in and try to connect to the DB.
+
 
