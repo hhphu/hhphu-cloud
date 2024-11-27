@@ -93,3 +93,41 @@ In the primary region (us-east-1), create a new RDS Subnet group using the priva
 
   ![image](https://github.com/user-attachments/assets/2ddc7fd8-a5ee-487c-bb5f-bac583506653)
 
+Once the Database is created. Confirm some of its configurations:
+- The Primary is only in the private subets:
+
+![primaryDB_subnetgroup](https://github.com/user-attachments/assets/625b2ea0-9724-4057-aea6-825a6d1c4dc9)
+
+- The Primary data has automatic backup enabled:
+
+![primaryDB_automaticbackup](https://github.com/user-attachments/assets/f6e7dafd-bbc8-4277-85a3-9b8219ef73e6)
+
+
+2. Create a read replica database in the standby region with the same requirements
+- Select the primary database > Actions > Create read replica
+
+  ![image](https://github.com/user-attachments/assets/9f0a7ed3-3b60-4099-bb05-d7afb1ce381e)
+
+- **Settings**
+     - **DB instance identifier**: `arr-database-replica`
+- **Instance configuration**
+     - **Burstable classes (includes t classes)** > **db.t3.micro**
+- **AWS Region**
+      - **Destination Region**: `US West Oregon`
+  
+![image](https://github.com/user-attachments/assets/34763dd4-50c0-46ad-9398-17cf0bcbfee4)
+
+- **Connectivity**
+     - **DB subnet group**: `private subnets for db` (make sure to create this subnet group first in the secondary region)
+     - **Exiting VPC security groups**: `UDARR-Database`
+
+       ![image](https://github.com/user-attachments/assets/53cf7c70-db7d-46b2-8746-b2dbc0a8886a)
+
+      - **Log exports**: `Audit Log`, `Error Log`, `General Log`, `Slow query log`
+
+### Availability Estimate
+- Single AZ outage: In an event of a single AZ outage, we can start a replica in a different zone (within the same region). This will takes about 2 minutes so the RTO is about 2 minutes.
+Because the replica is already available and ready to be used, the RPO is about 1 or 2 minutes or, in some cases, can be considered 0 minute.
+- Single region outage: In an event of a single region outage, we can refer to the secondary replica from different region. Time to switch to the secondary resources is approximately 5 to 10 minutes. Hence, the RTO is about 5 - 10 minutes.
+- Similar to the above scenario, the RPO in this case will be about 5-10 minutes as it's the length for the secondary resources to be ready for usage.
+
