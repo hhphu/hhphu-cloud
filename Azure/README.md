@@ -68,13 +68,14 @@ az keyvault list
 
 - List accessible key vaults
   
-  ```bash
+```bash
 az keyvault secret list --vault-name $VAULT_NAME
 ```
 
 ![image](https://github.com/user-attachments/assets/0084a1a0-03c2-4eca-a0b6-5e5a2186eb45)
 
 - Reading the content of the secrets in the keyvault
+
 ```bash
 az keyvault secret show --vault-name $VAULT_NAME --name $SECRET_NAME
 ```
