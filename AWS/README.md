@@ -4,7 +4,7 @@ This folder contains all of my AWS projectss, notes and cheatsheets.
 
 ## PROJECTS
 
-**- [Attacking and Defending AWS services]()**
+**- [Attacking and Defending AWS services](https://github.com/hhphu/thm-attacking-defending-aws)**
 
 **- [AWS Cloud Resume](https://github.com/hhphu/hhphu-cloud-resume-challenge.git)**
 
