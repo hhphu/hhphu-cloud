@@ -3,4 +3,4 @@
 - **[Deploy DVWA on Azure with Ansible](https://github.com/hhphu/dvwa-deployment-ansible.git)**
 
 ## Miscellaneous
-- **{Azure CLI Cheat Sheet](azure-cli-cheat-sheet.md)**
+- **[Azure CLI Cheat Sheet](azure-cli-cheat-sheet.md)**
